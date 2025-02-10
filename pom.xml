@@ -15,8 +15,6 @@
     </properties>
 
     <dependencies>
-        <!-- Другие зависимости вашего проекта -->
-
         <!-- JUnit 5 -->
         <dependency>
             <groupId>org.junit.jupiter</groupId>
