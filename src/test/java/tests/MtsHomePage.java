@@ -12,13 +12,12 @@ public class MtsHomePage {
     private WebDriverWait wait;
 
     // Локаторы для элементов
-    private final By blockTitle = By.xpath("//section/div/h2");
-    private final By paymentSystemLogos = By.xpath("*//section/div/div[2]/ul");
+    private final By blockTitle = By.xpath("//h2[contains(text(), 'Онлайн пополнение')]");
+    private final By paymentSystemLogos = By.cssSelector(".pay__partners > ul");
     private final By moreInfoLink = By.linkText("Подробнее о сервисе");
     private final By phoneNumberField = By.xpath("//*[@id='connection-phone']");
     private final By amountField = By.id("connection-sum");
     private final By continueButton = By.xpath("//*[@id='pay-connection']/button");
-    private final By emptyFieldErrorMessage = By.xpath("//div[@class='error-message']");
     // Локатор iframe
     private final By iFrame = By.xpath(".//iframe[@class='bepaid-iframe']");
 
