@@ -17,9 +17,9 @@ public class MtsHomePage {
     private final By moreInfoLink = By.linkText("Подробнее о сервисе");
     private final By phoneNumberField = By.xpath("//*[@id='connection-phone']");
     private final By amountField = By.id("connection-sum");
-    private final By continueButton = By.xpath("//*[@id='pay-connection']/button");
+    private final By continueButton = By.xpath("//button[text()='Продолжить']");
     // Локатор iframe
-    private final By iFrame = By.xpath(".//iframe[@class='bepaid-iframe']");
+    private final By iFrame = By.cssSelector("iframe.bepaid-iframe");
 
     // Локаторы для полей ввода реквизитов карты
 
@@ -30,9 +30,9 @@ public class MtsHomePage {
     private final By paymentSystemIcons = By.xpath("(//input[@value=''])[4]");
 
     // Локаторы для элементов, появляющихся после нажатия кнопки "Продолжить"
-    private final By displayedPhoneNumber = By.xpath("//div[@class='pay-description__text']/span[contains(text(), 'Оплата: Услуги связи')]");
+    private final By displayedPhoneNumber = By.xpath("//span[contains(text(), 'Оплата: Услуги связи')]");
     private final By displayedAmount = By.xpath("//span[contains(text(), '10.00 BYN')]");
-    private final By paymentButton = By.xpath("//div[2]/span");
+    private final By paymentButton = By.cssSelector("button[type='submit']");
 
     // Локаторы для полей формы "Услуги связи"
     private final By commServicesPhoneField = By.xpath("//input[@id='connection-phone']");
@@ -46,7 +46,8 @@ public class MtsHomePage {
     private final By homeInternetEmailField = By.xpath("//input[@id='internet-email']");
 
     // Локатор выпадающего списка
-    private final By installmentPlanDropdown = By.xpath("//section/div/div/div/div[2]/button");
+    private final By installmentPlanDropdown = By.xpath("//div[@class='select__wrapper']");
+
 
     // Локаторы для полей формы "Рассрочка"
     private final By installmentPlanOption = By.cssSelector(".select__item:nth-child(3) .select__option");
@@ -141,25 +142,19 @@ public class MtsHomePage {
 
     // Получение отображаемого номера телефона после нажатия кнопки "Продолжить"
     public String getDisplayedPhoneNumber() {
-
         String phoneNumber = wait.until(ExpectedConditions.visibilityOfElementLocated(displayedPhoneNumber)).getText();
-
         return phoneNumber;
     }
 
     // Получение отображаемой суммы после нажатия кнопки "Продолжить"
     public String getDisplayedAmount() {
-
         String amount = wait.until(ExpectedConditions.visibilityOfElementLocated(displayedAmount)).getText();
-
         return amount;
     }
 
     // Получение текста кнопки "Оплатить"
     public String getPaymentButtonText() {
-
         String paymentText = wait.until(ExpectedConditions.visibilityOfElementLocated(paymentButton)).getText();
-
         return paymentText;
     }
 

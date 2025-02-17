@@ -4,6 +4,7 @@ import io.github.bonigarcia.wdm.WebDriverManager;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
@@ -49,7 +50,6 @@ public class MtsTests {
     @Test
     public void testBlockTitle() {
         String expectedTitle = "Онлайн пополнение\nбез комиссии";
-        // Проверка соответствия заголовка блока ожидаемому значению
         assertEquals(expectedTitle, mtsHomePage.getBlockTitle(), "Название блока не совпадает");
     }
 
@@ -90,6 +90,9 @@ public class MtsTests {
 
         String displayedPhoneNumber = mtsHomePage.getDisplayedPhoneNumber();
         assertEquals("Оплата: Услуги связи Номер:375297777777", displayedPhoneNumber, "Отображаемый номер телефона некорректен");
+
+        String getPaymentButtonText = mtsHomePage.getPaymentButtonText();
+        assertEquals("Оплатить 10.00 BYN", getPaymentButtonText, "Отображаемая сумма некорректна");
 
         // Проверка плейсхолдеров в полях для ввода реквизитов карты
         assertEquals("Номер карты", mtsHomePage.getCardNumberLabelText(), "Текст для номера карты некорректен");
